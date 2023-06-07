@@ -1,4 +1,5 @@
 <?php
+
     require_once('controllers/LOG.php');
     require_once('controllers/Users.php');
     require_once('controllers/Register.php');
@@ -27,7 +28,7 @@
     }
 
     Register::registerUser( $user_data );
-    echo json_encode( ["message"=> "Thank you"]);
+    echo json_encode( ["message"=> "Register success✔. \nThank you!"]);
     exit;
 
 ?>
