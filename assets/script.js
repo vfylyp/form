@@ -1,12 +1,26 @@
 jQuery(function ($) {
     $(document).ready(function() {
-        var form = $('.register-form');
-        var title = $('.header-title');
+        var form            = $('.register-form');
+        var title           = $('.header-title');
+        var password_repeat = $('#form-password-repeat');
+        
+        form.change(function(e){
+            let password = $('#form-password');
+
+            if( password.val() != password_repeat.val() ){
+                password_repeat.addClass('bg-warning');
+            }else{
+                password_repeat.removeClass('bg-warning');
+            }
+
+        });
+
         form.submit(function(e) {
             e.preventDefault();
-           
-            var formData = $(this).serialize();
-            var messageBox = $('.message');
+
+            var formData    = $(this).serializeArray();
+            var messageBox  = $('.message');
+
             messageBox.hide();
             $.ajax({
                 type: 'POST',
